@@ -1,0 +1,233 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.sunwell</groupId>
+  <artifactId>stonefire.core</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>sunwell.stonefire.core</name>
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jackson.version>2.4.2</jackson.version>
+		<log4j.version>2.0.2</log4j.version>
+		<spring.framework.version>4.0.6.RELEASE</spring.framework.version>
+		<hibernate.validator.version>5.1.2.Final</hibernate.validator.version>
+	</properties>
+	<dependencies>
+		<!--<dependency>
+			<groupId>jBCrypt-0.4</groupId>
+			<artifactId>jBCrypt-0.4</artifactId>
+			<scope>system</scope>
+			<version>1.0</version>
+			<systemPath>${project.basedir}/../../lib/jBCrypt-0.4.jar</systemPath> 
+			<systemPath> /media/mideel/DATA/Work/Software/Lib/jBCrypt-0.4.jar</systemPath> 
+		</dependency> -->
+	<!-- 	<dependency>
+			<groupId>jackson-annotations-2.9.2</groupId>
+			<artifactId>jackson-annotations-2.9.2</artifactId>
+			<scope>system</scope>
+			<version>1.0</version>
+			<systemPath>${project.basedir}/../../lib/jackson-annotations-2.9.2.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>jackson-core-2.9.2</groupId>
+			<artifactId>jackson-core-2.9.2</artifactId>
+			<scope>system</scope>
+			<version>1.0</version>
+			<systemPath>${project.basedir}/../../lib/jackson-core-2.9.2.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>jackson-databind-2.9.2</groupId>
+			<artifactId>jackson-databind-2.9.2</artifactId>
+			<scope>system</scope>
+			<version>1.0</version>
+			<systemPath>${project.basedir}/../../lib/jackson-databind-2.9.2.jar</systemPath>
+		</dependency> 
+		<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+            <scope>compile</scope>
+        </dependency> -->
+        <!-- <dependency>
+			<groupId>com.sunwell</groupId>
+			<artifactId>aegwyn.core.web</artifactId>
+			<scope>compile</scope>
+			<version>1.0</version>
+		</dependency> -->
+        <dependency>
+		    <groupId>org.mindrot</groupId>
+		    <artifactId>jbcrypt</artifactId>
+		    <version>0.4</version>
+            <scope>compile</scope>
+		</dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+            <scope>compile</scope>
+        </dependency>
+		<!--  <dependency>
+			<groupId>aegwyn.core.web</groupId>
+			<artifactId>aegwyn.core.web</artifactId>
+			<scope>system</scope>
+			<version>1.0</version>
+			<systemPath>${project.basedir}/../../lib/aegwyn.core.web.jar</systemPath>
+			<systemPath> /media/mideel/DATA/Work/Software/Lib/jackson-databind-2.9.2.jar</systemPath> 
+		</dependency> -->
+		
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.framework.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+			<version>${spring.framework.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>${spring.framework.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.framework.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.framework.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>5.1.6</version>
+		</dependency>
+		
+		<!--   <dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>8.0.9-rc</version>
+		</dependency> -->
+		
+	     <dependency>
+			  <groupId>org.hibernate</groupId>
+			  <artifactId>hibernate-annotations</artifactId>
+			  <version>3.5.6-Final</version>
+			  <scope>provided</scope>
+		</dependency> 
+		
+		<!--   <dependency>
+		    <groupId>org.hibernate.javax.persistence</groupId>
+		    <artifactId>hibernate-jpa-2.1-api</artifactId>
+		    <version>1.0.2.Final</version>
+		</dependency> -->
+		
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>3.2.0.Beta1</version>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<!--    <dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>  -->
+		
+		<dependency> 
+			<groupId>javax.validation</groupId> 
+			<artifactId>validation-api</artifactId> 
+			<version>1.1.0.Final</version> 
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator.version}</version>
+			<scope>runtime</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.jboss.logging</groupId>
+					<artifactId>jboss-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- <dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator-annotation-processor</artifactId>
+			<version>${hibernate.validator.version}</version>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency> -->
+
+		
+
+	<!-- 	<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>javax.persistence</artifactId>
+			<version>2.1.0</version>
+			<scope>compile</scope>
+		</dependency> -->
+
+	<!-- 	<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.3.6.Final</version>
+			<scope>runtime</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.hibernate.javax.persistence</groupId>
+					<artifactId>hibernate-jpa-2.1-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.jboss.spec.javax.transaction</groupId>
+					<artifactId>jboss-transaction-api_1.2_spec</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.jboss.logging</groupId>
+					<artifactId>jboss-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency> -->
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

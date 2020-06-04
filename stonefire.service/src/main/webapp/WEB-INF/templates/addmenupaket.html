@@ -1,0 +1,89 @@
+
+<div id="addmenupaket" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- <div class="col-lg-12 col-xl-12" [hidden]="currentView != 'menuharian'">
+            <menuharian  
+                    (okButtonClicked)="setMenuHarian($event)"
+                    (cancelButtonClicked)="currentView='form'"
+                    [menus]="scheduledPackage.menus">
+            </menuharian>
+        </div> -->
+			<div class="modal-header">
+				<h4 class="modal-title">
+					Tambah menu paket
+				</h4>
+				<button id="button_cancel" class="close" data-dismiss="modal">
+					&times;
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-lg-12 col-xl-12">
+						<form id="form_main">
+							<div class="form-group">
+								<label id="label_menuname"> Nama Menu <br></label> <input
+									id="input_menuname" class="form-control" name="name"
+									type="text" placeholder="masukan nama menu">
+							</div>
+							<div class="form-group">
+								<label id="label_menudetail"> 
+									Detail menu <br>
+								</label> 
+								<input id="input_menudetail" class="form-control" name="konten"
+									type="text" placeholder="Isi dengan penjelasan mengenai menu">
+							</div>
+							<div class="form-group">
+								<label id="label_menumemo"> Memo (jika ada informasi
+									tambahan) <br>
+								</label> 
+								<input id="input_menumemo" class="form-control" name="memo"
+									type="text"
+									placeholder="Isi dengan informasi tambahan mengenai menu">
+							</div>
+							<div class="form-group">
+								<label id="label_harga">
+									Harga<br>
+								</label> 
+								<input
+									id="input_harga" class="form-control" name="price"
+									type="number" placeholder="Rp.">
+							</div>
+							<div class="form-group">
+								<label id="label_minorder"> 
+									Minimal order <br>
+								</label> 
+								<input
+									id="input_minorder" class="form-control" name="minOrder"
+									type="number"
+									placeholder="Isi dengan informasi tambahan mengenai menu">
+							</div>
+							<!-- <label id="label_tag"> 
+                            Tag
+                        </label><br>
+                        <autocomplete #autoComplete [objects]="tagService.masterTagsList ? tagService.masterTagsList : {id: 0, name: 'RETRIEVING DATA, PLEASE WAIT'}" 
+                                                    [tags]="scheduledPackage.tags">
+                        </autocomplete> -->
+							<button type="button" id="button_menuharian" class="btn btn-info"
+								data-toggle="modal" data-target="#menuharian" th:text="'Menu Harian'">
+								MENU HARIAN
+							</button>
+							<div class="form-group" id="inputfile_wrapper">
+								<label class="custom-file"> <input #inputImage
+									type="file" id="chooseFile" class="custom-file-input">
+									<span class="custom-file-control"></span>
+								</label> <img id="image_preview">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button id="button_submit" class="btn btn-success"
+					data-dismiss="modal">Submit</button>
+			</div>
+		</div>
+	</div>
+
+<!-- 	<div th:replace="~{menuharian :: #menuharian}"></div> -->
+</div>

@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en" style="width: 100%" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>StonefireFrontend</title>
+<base href="/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="http://localhost:8080/stonefire/resource/css/jquery-ui-1.12.1.css"
+	th:href="@{/resource/css/jquery-ui-1.12.1.css}" rel="stylesheet">
+<link
+	href="http://localhost:8080/stonefire/resource/css/fontawesome-all.css"
+	th:href="@{/resource/css/fontawesome-all.css}" rel="stylesheet">
+<link href="http://localhost:8080/stonefire/resource/css/bootstrap.css"
+	th:href="@{/resource/css/bootstrap.css}" rel="stylesheet">
+<link
+	href="http://localhost:8080/stonefire/resource/css/addmenupaket.css"
+	th:href="@{/resource/css/addmastermenu.css}" rel="stylesheet">
+<link
+	href="http://localhost:8080/stonefire/resource/css/menuharian.css"
+	th:href="@{/resource/css/menuharian.css}" rel="stylesheet">
+<link
+	href="http://localhost:8080/stonefire/resource/css/addmenu.css"
+	th:href="@{/resource/css/addmenu.css}" rel="stylesheet">
+<link href="http://localhost:8080/stonefire/resource/css/menupaket.css"
+	th:href="@{/resource/css/menupaket.css}" rel="stylesheet">
+</head>
+<body style="width: 100%">
+	<div id="menupaket" class="container-fluid">
+		<div class="row">
+			<div id="header" class="col-lg-12 col-xl-12">
+				<div class="row">
+					<div class="col-lg-12 col-xl-12">
+						<div id="right_header" class="float-right m-1 mr-3">
+							<div id="email" class="dropdown ">
+								<button id="button_email" th:text="${userName}"
+									class="btn dropdown-toggle" type="button"
+									data-toggle="dropdown">email</button>
+								<div class="dropdown-menu">
+									<a class="dropdown-item">logout</a> <a class="dropdown-item">profile</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-1 mb-2">
+					<div class="col-sm-12">
+						<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+							<ul class="navbar-nav">
+								<li class="nav-item"><a class="nav-link" href="#">Home</a>
+								</li>
+								<li class="nav-item active"><a class="nav-link" href="#">Menu</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">Setting</a></li>
+								<li class="nav-item"><a class="nav-link " href="#">Notification(0)</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+
+
+			<div id="alert_error" class="alert alert-danger" role="alert"
+				style="display: none">
+				<strong id="error_message">Error Message</strong>
+			</div>
+		</div>
+
+		<div id="main" class="row">
+			<div class="col-lg-12 col-xl-12">
+				<!-- <div id="main" class="container-fluid"> -->
+				<div id="main_actions" class="row ">
+					<div class="col-lg-12 col-xl-12 center-block text-center">
+						<ul class="nav nav-tabs nav-justified">
+							<li class="nav-item"><a class="nav-link ">MasterMenu</a></li>
+							<li class="nav-item"><a class="nav-link active">Menu Paket</a></li>
+							<li class="nav-item"><a class="nav-link">Menu Individual</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 col-xl-12">
+						<div id="header">
+							<div id="left_header">
+								<h1>Menu Paket</h1>
+								<button id="button_add_menu_paket" class="btn btn-primary" 
+									data-toggle="modal" data-target="#addmenupaket">
+									<i class="fa fa-plus-circle align-middle" aria-hidden="true"></i>
+									<span class="align-middle">Tambah Menu Paket</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 col-xl-12">
+						<div id="list_menupaket" class="container-fluid">
+							<div class="row" th:remove="all-but-first">
+								<div class="col-lg-4 col-xl-4"
+									th:each="mp : ${listMenuPaket.scheduledPackageList}"
+									th:if="${mpStat.count} <= 3">
+									<div class="card area_menupaket">
+										<h4 class="card-title" th:text="${mp.name}">Namw</h4>
+										<img class="card-img-top"
+											th:src="${mp.image} ? @{/resource/images/{image}(image=${mp.image})}">
+										<div class="card-block" style="overflow-y: true">
+											<div class="area_menudetail">
+												<p class="card-text" th:text="${mp.konten}">Konten</p>
+											</div>
+											<button 
+												class="btn btn-info btn-edit"
+												th:attr="data-index=${mpStat.index}">
+												<i class="fa fa-pencil-square-o align-middle"
+													aria-hidden="true"></i> <span class="align-middle">Ubah</span>
+											</button>
+											<button 
+												class="btn btn-danger btn-delete"
+												th:attr="data-index=${mpStat.index}">
+												<i class="fa fa-trash-o align-middle" aria-hidden="true"></i>
+												<span class="align-middle">Hapus</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 col-xl-12">
+						<div id="pagenumber_area">
+							<label id="label_entries"
+								th:text="#{showing_entries(${count}, ${totalElements})}">
+							</label>
+							<button>Previous</button>
+							<button></button>
+							<button></button>
+							<button></button>
+							<button></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace="~{addmenupaket :: #addmenupaket}"></div>
+	<div th:replace="~{menuharian :: #menuharian}"></div>
+	<div th:replace="~{addmenu :: #addmenu}"></div>
+	
+	<!-- <script src="localhost:8080/stonefire/resource/js/jquery-3.1.1.slim.js" 
+		th:src="@{/resource/js/jquery-3.1.1.slim.js}">
+	</script> -->
+	<script
+		src="http://localhost:8080/stonefire/resource/js/jquery-1.12.4.js"
+		th:src="@{/resource/js/jquery-1.12.4.js}">
+	</script>
+	<script
+		src="http://localhost:8080/stonefire/resource/js/jquery-ui-1.12.1.js"
+		th:src="@{/resource/js/jquery-ui-1.12.1.js}">
+	</script>
+	<script src="http://localhost:8080/stonefire/resource/js/popper.js"
+		th:src="@{/resource/js/popper.js}">
+	</script>
+	<script src="http://localhost:8080/stonefire/resource/js/bootstrap.js"
+		th:src="@{/resource/js/bootstrap.js}">
+	</script>
+	<script th:inline="javascript">
+		/*[+
+			var totalPages = [[${totalPages}]];
+			var totalElements = [[${totalElements}]];
+			var pageNo = [[${pageNo}]];
+			var totalPages = [[${totalPages}]]
+			var totalElements = [[${totalElements}]]
+			var listScheduledPackage = [[${listMenuPaket} != null ? ${listMenuPaket.scheduledPackageList}]]
+			var postURL = [[ @{/resources/scheduledpackage} ]];
+			console.log("Page: " + pageNo);
+			console.log("LIST: " + JSON.stringify(listScheduledPackage, undefined, 4));
+		+]*/
+	</script>
+	<script src="http://localhost:8080/stonefire/resource/js/common.js"
+		th:src="@{/resource/js/common.js}">
+	</script>
+	<script
+		src="http://localhost:8080/stonefire/resource/js/addmenu.js"
+		th:src="@{/resource/js/addmenu.js}">
+	</script>
+	<script
+		src="http://localhost:8080/stonefire/resource/js/menuharian.js"
+		th:src="@{/resource/js/menuharian.js}">
+	</script>
+	<script
+		src="http://localhost:8080/stonefire/resource/js/addmenupaket.js"
+		th:src="@{/resource/js/addmenupaket.js}">
+	</script>	
+	<script src="http://localhost:8080/stonefire/resource/js/menupaket.js"
+		th:src="@{/resource/js/menupaket.js}">
+	</script>
+</body>
+</html>

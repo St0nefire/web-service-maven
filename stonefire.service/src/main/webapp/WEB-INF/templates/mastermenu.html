@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="en" style="width: 100%" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>StonefireFrontend</title>
+<base href="/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="http://localhost:8080/stonefire/resource/css/jquery-ui-1.12.1.css"
+	th:href="@{/resource/css/jquery-ui-1.12.1.css}" rel="stylesheet">
+<link
+	href="http://localhost:8080/stonefire/resource/css/fontawesome-all.css"
+	th:href="@{/resource/css/fontawesome-all.css}" rel="stylesheet">
+<link href="http://localhost:8080/stonefire/resource/css/bootstrap.css"
+	th:href="@{/resource/css/bootstrap.css}" rel="stylesheet">
+<link href="http://localhost:8080/stonefire/resource/css/mastermenu.css"
+	th:href="@{/resource/css/mastermenu.css}" rel="stylesheet">
+<link
+	href="http://localhost:8080/stonefire/resource/css/addmastermenu.css"
+	th:href="@{/resource/css/addmastermenu.css}" rel="stylesheet">
+</head>
+<body style="width: 100%">
+	<div id="home" class="container-fluid">
+		<div class="row">
+			<div id="header" class="col-lg-12 col-xl-12 bg-warning">
+				<div class="row">
+					<div class="col-lg-12 col-xl-12">
+						<div id="right_header" class="float-right m-1 mr-3">
+							<div id="email" class="dropdown ">
+								<button id="button_email" th:text="${userName}"
+									class="btn dropdown-toggle" type="button"
+									data-toggle="dropdown">email</button>
+								<div class="dropdown-menu">
+									<a class="dropdown-item">logout</a> 
+									<a class="dropdown-item">profile</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-1 mb-2">
+					<div class="col-sm-12">
+						<nav class="navbar navbar-expand-sm bg-danger navbar-dark">
+							<ul class="navbar-nav">
+								<li class="nav-item active"><a class="nav-link" href="#">Home</a>
+								</li>
+								<li class="nav-item"><a class="nav-link" href="#">Menu</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">Setting</a></li>
+								<li class="nav-item"><a class="nav-link " href="#">Notification(0)</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			
+
+			<div id="alert_error" class="alert alert-danger" role="alert"
+				style="display: none">
+				<strong id="error_message">Error Message</strong>
+			</div>
+		</div>
+		<div id="main" class="row">
+			<div class="col-lg-12 col-xl-12">
+				<!-- <div id="main" class="container-fluid"> -->
+				<div id="main_actions" class="row ">
+					<div class="col-lg-12 col-xl-12 center-block text-center">
+						<ul class="nav nav-tabs nav-justified">
+							<li class="nav-item">
+								<a class="nav-link active" th:href="@{/mastermenu}">
+									Master Menu
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/scheduledpackage?$paging.page=1&$paging.size=3}">
+									Menu Paket
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" th:href="@{/mastermenu?$paging.page=1&$pagng.size=3}">
+									Menu Individual
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- <div id="main_content" class="row">
+						<div class="col-lg-12 col-xl-12"> -->
+				<div id="mastermenu" class="row">
+					<div class="col-lg-12 col-xl-12">
+						<div class="row">
+							<div class="col-lg-12 col-xl-12">
+								<div id="header_mm">
+									<div id="search_box">
+										<label id="label_text">Search</label> <input #inputSearch
+											id="input_text" type="text" (keyup)="filter(inputSearch)">
+									</div>
+									<div id="left_header_mm">
+										<h1>Master Menu</h1>
+										<button id="button_add_master_menu" class="btn btn-primary"
+											(click)="signalAddButtonClicked()">
+											<i class="fa fa-plus-circle align-middle" aria-hidden="true">
+											</i> <span class="align-middle"> Tambah Master Menu </span>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-12 col-xl-12">
+								<table id="table_main" class="table" border=1 frame=void rules=rows>
+									<thead>
+										<tr>
+											<th style="width: 5%">No.</th>
+											<th style="width: 13%">Gambar</th>
+											<th style="width: 12%">Nama menu</th>
+											<th style="width: 20%">Detail menu</th>
+											<th style="width: 20%">Memo</th>
+											<th style="width: 10%">Status aktif</th>
+											<th style="width: 20%">Aksi</th>
+										</tr>
+									</thead>
+									<tbody th:remove="all-but-first">
+										<tr th:each="mm : ${listMasterMenu.masterMenuList}">
+											<td th:text="${mmStat.count}">0</td>
+											<td class="column_image"><img
+												th:src="${mm.image} ? @{/resource/images/{image}(image=${mm.image})}" />
+											</td>
+											<td th:text="${mm.name}">Ayam Goreng</td>
+											<td class="column_detail">
+												<div th:text="${mm.konten}" class="area_content">Kontennya</div>
+											</td>
+											<td class="column_memo">
+												<div th:text="${mm.memo}" class="area_memo">Memonya</div>
+											</td>
+											<td>
+												<button
+													th:style="${mm.active} ? 'background-color:green' : 'background-color:pink'"
+													th:text="${mm.active} ? 'Aktif' : 'Tidak'"
+													class="button_active"
+													(click)="toogleActiveStatus(listObjects[i])">
+													Aktif</button>
+											</td>
+											<td>
+												<button class="btnEdit btn btn-info"
+													th:attr="data-index=${mmStat.index}">
+													<i class="fa fa-pencil-square-o align-middle"
+														aria-hidden="true"> </i> <span class="align-middle">Ubah</span>
+												</button>
+												<button class="btn btn-danger"
+													(click)="deleteMasterMenu(listObjects[i])">
+													<i class="fa fa-trash-o align-middle" aria-hidden="true">
+													</i> <span class="align-middle">Hapus</span>
+												</button>
+											</td>
+										</tr>
+										<tr>
+											<td>0</td>
+											<td class="column_image"><img
+												th:src="@{/resource/images/ayamgoreng.jpg}" /></td>
+											<td>Ayam Goreng</td>
+											<td class="column_detail">
+												<div class="area_content">Kontennya</div>
+											</td>
+											<td class="column_memo">
+												<div class="area_memo">Memonya</div>
+											</td>
+											<td>
+												<button class="button_active"
+													(click)="toogleActiveStatus(listObjects[i])">
+													Aktif</button>
+											</td>
+											<td>
+												<button class="btnEdit btn btn-info"
+													th:attr="data-index=${mmStat.index}">
+													<i class="fa fa-pencil-square-o align-middle"
+														aria-hidden="true"> </i> <span class="align-middle">Ubah</span>
+												</button>
+												<button class="btn btn-danger"
+													(click)="deleteMasterMenu(listObjects[i])">
+													<i class="fa fa-trash-o align-middle" aria-hidden="true">
+													</i> <span class="align-middle">Hapus</span>
+												</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div id="pagenumber_area">
+									<label id="label_entries"
+										th:text="#{showing_entries(${listMasterMenu.masterMenuList.size()}, ${count})}">
+										<!-- th:text="'Showing ' + ${listMasterMenu.masterMenuList.size()} + 
+											' entries of ' + ${count} + ' entries '" --> <!-- th:text="#{showing_entries(${listMasterMenu.masterMenuList.size()}, ${count})}" -->
+									</label>
+									<button [ngStyle]="getStyleFor(-1)"
+										(click)="goToPreviousPage()">Previous</button>
+									<button [ngStyle]="getStyleFor(0)"
+										*ngIf="arrPageNum[0].value != 0"
+										(click)="goToPage(arrPageNum[0].value)">1</button>
+									<button [ngStyle]="getStyleFor(1)"
+										*ngIf="arrPageNum[1].value != 0"
+										(click)="goToPage(arrPageNum[1].value)">2</button>
+									<button [ngStyle]="getStyleFor(2)"
+										*ngIf="arrPageNum[2].value != 0"
+										(click)="goToPage(arrPageNum[2].value)">3</button>
+									<button [ngStyle]="getStyleFor(3)"
+										*ngIf="arrPageNum[3].value != 0"
+										(click)="goToPage(arrPageNum[3].value)">4</button>
+									<button [ngStyle]="getStyleFor(4)"
+										*ngIf="arrPageNum[4].value != 0"
+										(click)="goToPage(arrPageNum[4].value)">5</button>
+									<button [ngStyle]="getStyleFor(5)" (click)="goToNextPage()">Next</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--</div> -->
+				<!-- </div> -->
+			</div>
+		</div>
+	</div>
+
+	<div th:replace="~{addmastermenu :: #addmastermenu}"></div>
+
+	<!-- <script src="localhost:8080/stonefire/resource/js/jquery-3.1.1.slim.js" 
+		th:src="@{/resource/js/jquery-3.1.1.slim.js}">
+	</script> -->
+	<script
+		src="http://localhost:8080/stonefire/resource/js/jquery-1.12.4.js"
+		th:src="@{/resource/js/jquery-1.12.4.js}">
+	</script>
+	<script
+		src="http://localhost:8080/stonefire/resource/js/jquery-ui-1.12.1.js"
+		th:src="@{/resource/js/jquery-ui-1.12.1.js}">
+	</script>
+	<script
+		src="http://localhost:8080/stonefire/resource/js/popper.js"
+		th:src="@{/resource/js/popper.js}">
+	</script>
+	<script src="http://localhost:8080/stonefire/resource/js/bootstrap.js"
+		th:src="@{/resource/js/bootstrap.js}">
+	</script>
+	<script th:inline="javascript">
+		/*[+
+			var userName = [[${userName}]];
+			var errorMessage = [[ ${errorMessage} ]];
+			var sessionString = [[ ${sessionString} ]];
+			var pageNo = [[ ${pageNo} ]];
+			var count = [[ ${count} ]];
+			var pageCount = [[ ${pageCount} ]];
+			var listMM = [[ ${listMasterMenu.masterMenuList} ]] ;
+			var user = [[ ${user} ]] ;
+			var postURL = [[ @{/resources/mastermenu} ]];
+			console.log("Name: " + userName);
+		+]*/
+	</script>
+	<script
+		src="http://localhost:8080/stonefire/resource/js/addmastermenu.js"
+		th:src="@{/resource/js/addmastermenu.js}">
+	</script>
+	<script src="http://localhost:8080/stonefire/resource/js/mastermenu.js"
+		th:src="@{/resource/js/mastermenu.js}">
+	</script>
+</body>
+</html>
+
+<!-- <div id="home" class="container-fluid" [loading]="isLoading()">
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <header></header>
+            <div id="alert_error" class="alert alert-danger" role="alert" [hidden]="!isError">
+                <strong>Error ketika mengambil data.</strong> Silakan periksa koneksi atau coba lagi beberapa saat
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="!isError">
+        <div class="col-lg-12 col-xl-12">
+            <div id="main" class="container-fluid">
+                <div id="main_actions" class="row "> 
+                    <div class="col-lg-12 col-xl-12 center-block text-center">
+						<ul class="nav nav-tabs nav-justified">
+                            <li class="nav-item">
+                              <a class="nav-link" [ngClass]="{'active': currentView == 'mastermenu'}" (click)="goToMasterMenu()">Master Menu</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" [ngClass]="{'active': currentView == 'menupaket'}" (click)="goToMenuPaket()">Menu Paket</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" [ngClass]="{'active': currentView =='menuindividual'}" (click)="goToMenuIndividual()">Menu Individual</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="main_content" class="row">
+                    <div class="col-lg-12 col-xl-12">
+                        <mastermenugroup #mmGroup [hidden]="currentView != 'mastermenu'"></mastermenugroup>
+                        <menupaketgroup #mpGroup [hidden]="currentView != 'menupaket'"></menupaketgroup>
+                        <menuindividualgroup #miGroup [hidden]="currentView != 'menuindividual'"></menuindividualgroup>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<!-- <div id="mastermenu" class="container-fluid" [loading]="isLoading"> 
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <div id="header">
+                <div id="search_box">
+                    <label id="label_text">Search</label>
+                    <input #inputSearch id="input_text" type="text" (keyup)="filter(inputSearch)">
+                </div>
+                <div id="left_header">
+                    <h1>Master Menu</h1>
+                    <button class="btn btn-primary" (click)="signalAddButtonClicked()">
+                       <i class="fa fa-plus-circle align-middle" aria-hidden="true"></i>
+                        <span class="align-middle">Tambah Master Menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <table id="table_main" border=1 frame=void rules=rows>
+                <thead>
+                 <tr>
+                    <th style="width: 5%">No.</th>
+                    <th style="width: 13%">Gambar</th>
+                    <th style="width: 12%">Nama menu</th>
+                    <th style="width: 20%">Detail menu</th>
+                    <th style="width: 20%">Memo</th>
+                    <th style="width: 10%">Status aktif</th>
+                    <th style="width: 20%">Aksi</th>
+                 </tr>
+                </thead>
+                <tbody *ngIf="listObjects != null" >
+                    <tr *ngFor="let n of getRowNumber();  let i = index" 
+                        [ngStyle]="i >= listObjects.length ? {'visibility': 'hidden'} : {}">
+
+                       <td>{{i < listObjects.length ? listObjects[i].index: 0}}</td>
+                       <td class="column_image">
+                           <img [src]="i < listObjects.length ? getImageURL(listObjects[i].image) : ''">
+                       </td>
+                       <td>
+                           {{i < listObjects.length ? listObjects[i].name : ''}}
+                       </td>
+                       <td class="column_detail">
+                           <div class="area_content">
+                               {{i < listObjects.length ? listObjects[i].konten : ''}}
+                           </div>
+                       </td>
+                       <td class="column_memo">
+                           <div class="area_memo">
+                               {{i < listObjects.length ? listObjects[i].memo : ''}}
+                           </div>
+                       </td>
+                       <td>
+                           <button class="button_active" 
+                                   [ngStyle]="getActiveStyleForIndex(i)"
+                                   (click)="toogleActiveStatus(listObjects[i])">
+                               {{i < listObjects.length ? (listObjects[i].active ? 'Aktif' : 'Tidak') : ''}}
+                           </button>
+                       </td>
+                       <td>
+                           <button class="btn btn-info" (click)="signalEditButtonClicked(listObjects[i])">
+                                <i class="fa fa-pencil-square-o align-middle" aria-hidden="true"></i>
+                                <span class="align-middle">Ubah</span>
+                           </button>
+                           <button class="btn btn-danger" (click)="deleteMasterMenu(listObjects[i])">
+                                <i class="fa fa-trash-o align-middle" aria-hidden="true"></i>
+                                <span class="align-middle">Hapus</span>
+                           </button>
+                       </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="pagenumber_area">
+                <label id="label_entries">
+                    {{(getTotalObjectsInCurrentPage() > 0) ? ("Showing " + getTotalObjectsInCurrentPage() + " of " + getTotalObjects() + 
+                                (getTotalObjects() > 1 ? " entries " : " entry ")) : ""}}
+                </label>
+                <button [ngStyle]="getStyleFor(-1)" (click)="goToPreviousPage()" >Previous</button>
+                <button [ngStyle]="getStyleFor(0)" *ngIf="arrPageNum[0].value != 0" (click)="goToPage(arrPageNum[0].value)">{{arrPageNum[0].value}}</button>
+                <button [ngStyle]="getStyleFor(1)" *ngIf="arrPageNum[1].value != 0" (click)="goToPage(arrPageNum[1].value)">{{arrPageNum[1].value}}</button>
+                <button [ngStyle]="getStyleFor(2)" *ngIf="arrPageNum[2].value != 0" (click)="goToPage(arrPageNum[2].value)">{{arrPageNum[2].value}}</button>
+                <button [ngStyle]="getStyleFor(3)" *ngIf="arrPageNum[3].value != 0" (click)="goToPage(arrPageNum[3].value)">{{arrPageNum[3].value}}</button>
+                <button [ngStyle]="getStyleFor(4)" *ngIf="arrPageNum[4].value != 0" (click)="goToPage(arrPageNum[4].value)">{{arrPageNum[4].value}}</button>
+                <button [ngStyle]="getStyleFor(5)" (click)="goToNextPage()">Next</button>
+            </div>
+        </div>
+    </div>
+</div> -->

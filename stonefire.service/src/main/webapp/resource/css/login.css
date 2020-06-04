@@ -1,0 +1,119 @@
+#login .row {
+/*    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;*/
+
+   /*  .row { */
+        margin-top: 1rem;
+    /* } */    
+}
+
+#main {
+	margin-top: 4rem;
+	margin-bottom: 8rem;    
+}
+
+#form_wrapper {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+}
+
+#form {
+	width: 60%;	
+}
+
+#button_login {
+	/*                        
+		width: 80%;                        
+		font-size: 2em;
+	*/
+	margin: 1%;
+}
+
+#button_facebooklogin {
+	background: #3B5998;
+	border-radius: 0;
+	color: #fff;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #263961; 
+}
+
+#footer {
+	background-color: beige;
+	
+}
+
+#footer > ul {
+	ul {
+	    margin: 1%;
+	    list-style-type:none
+	}
+}
+
+
+#header {
+	background-color: beige;    
+}
+
+#right_header {
+	display: inline-block;
+	float: right;
+	margin: 1%;	
+}
+
+#link_login, #link_register {
+    margin: 1em;
+}
+	
+#email > .btn-secondary {
+	background-color: transparent ;
+	border: none;
+}
+
+#options {
+	position: absolute;
+	z-index: 11;
+	margin-top: 0px;
+	background: black;	
+}
+
+#options > label {
+	label {
+	    margin: 0.5em;
+	    display: block;
+	    color: white;
+	}
+}
+
+/* #main > div {                
+        #form_wrapper {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            
+            #form {
+                width: 60%;
+                #button_login {
+                       width: 80%;
+                        font-size: 2em;
+                    margin: 1%;
+                }
+
+                #button_facebooklogin {
+                    background: #3B5998;
+                    border-radius: 0;
+                    color: #fff;
+                    border-width: 1px;
+                    border-style: solid;
+                    border-color: #263961; 
+                }
+            }
+        }
+    } */

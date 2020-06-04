@@ -1,0 +1,164 @@
+/*
+#welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    
+    #main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 80%;
+        
+        #input_lokasi, #input_cari, #button_cari {
+            font-size: 2em;
+            border: 1px dotted black;
+            margin: 1%;
+        }
+    }
+}*/
+
+
+#welcome > .row {
+	margin-top: 1rem;
+}
+
+#center_area {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+#center_area > input {        
+	input {
+	    border: none;
+	}
+}
+
+#center_area > .input-group {
+	border: 1px solid grey;
+} 
+
+#center_area > .input-group-addon {
+	background-color: transparent;
+	border: none;
+}
+
+#search_wrapper {
+	width: 100%;
+	
+	button {
+	    float: right;
+	}
+}
+
+#footer {
+	background-color: beige;
+	
+}
+
+#footer > ul {
+	ul {
+	    margin: 1%;
+	    list-style-type:none
+	}
+}
+
+
+#header {
+	background-color: beige;    
+}
+
+#right_header {
+	display: inline-block;
+	float: right;
+	margin: 1%;	
+}
+
+#link_login, #link_register {
+    margin: 1em;
+}
+	
+/* #email > .btn-secondary {
+	background-color: transparent ;
+	border: none;
+} */
+
+#options {
+	position: absolute;
+	z-index: 11;
+	margin-top: 0px;
+	background: black;	
+}
+
+#options > label {
+	label {
+	    margin: 0.5em;
+	    display: block;
+	    color: white;
+	}
+}
+
+
+
+/*#welcome { */
+/*    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;*/
+
+   /* .row {
+        margin-top: 1rem;
+    }
+
+    #center_area {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        
+        input {
+            border: none;
+        }
+        
+        .input-group {
+            border: 1px solid grey;
+        }
+        
+        .input-group-addon {
+            background-color: transparent;
+            border: none;
+        }
+        
+        #search_wrapper {
+            width: 100%;
+            
+            button {
+                float: right;
+            }
+        } */
+    
+/*        #main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 80%;
+
+            #image_logo {
+                min-height: 0px;
+            }
+
+            #input_lokasi, #input_cari, #button_cari {
+                font-size: 2em;
+                border: 1px dotted black;
+                margin: 1%;
+            }
+        }*/
+   /* }
+} */

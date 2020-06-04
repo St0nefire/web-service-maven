@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 100%" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>StonefireFrontend</title>
+<base href="/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="localhost:8080/stonefire/resource/css/jquery-ui-1.12.1.css" 
+	th:href="@{/resource/css/jquery-ui-1.12.1.css}"
+	rel="stylesheet">
+<link href="localhost:8080/stonefire/css/font-awesome.css"
+	th:href="@{/resource/css/font-awesome.css}" rel="stylesheet">
+<link href="localhost:8080/stonefire/css/bootstrap.css"
+	th:href="@{/resource/css/bootstrap.css}" rel="stylesheet">
+<link href="localhost:8080/stonefire/css/login.css"
+	th:href="@{/resource/css/login.css}" rel="stylesheet">
+</head>
+<body style="width: 100%">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12 col-xl-12">
+				<div id="header" class="row">
+					<div class="col-lg-12 col-xl-12">
+						<div id="right_header">
+		                    <!-- <a id="link_login" 
+                    			href="localhost:8080/stonefire/login" 
+                    			th:href="@{/login}" routerLink="/login">
+		                       <i class="fa fa-sign-in"></i>
+		                       Login
+		                    </a> -->
+		                    <a id="link_register" >
+		                       <i class="fa fa-user"></i>
+		                       Register
+		                    </a>
+		                    <!-- <div id="email" class="dropdown" >
+		                        <button id="button_email" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                        	email
+		                        </button>
+		                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		                          <a class="dropdown-item">logout</a>
+		                          <a class="dropdown-item">profile</a>
+		                        </div>
+		                     </div> -->
+		                    
+		                </div>
+					</div>
+				</div>
+				<div id="alert_error" class="alert alert-danger" 
+						role="alert" style="display:none">
+                	<strong id="error_message">Error Message.</strong> 
+            	</div>
+			</div>
+		</div>
+		<div class="row" id="main">
+			<div class="col-lg-12 col-xl-12 text-center center-block">
+				<div id="form_wrapper">
+					<form id="form" action="" method="POST">
+						<h2 id="heading">Please Login into Your Account</h2>
+						<div class="form-group">
+							<input id="input_name" name="email" class="form-control"
+								type="text" placeholder="Email">
+						</div>
+						<div class="form-group">
+							<input id="input_password" name="password" class="form-control"
+								type="password" placeholder="Password">
+						</div>
+						<input id="button_login" type="submit" value="submit" class="btn btn-lg btn-primary"/>
+						<a id="link_forget" > Forget Password ?</a> <br>
+						<label> don't have account ? register 
+							<a id="link_login" >
+								here
+							</a> 
+							<br> 
+							or login with
+							<button class="btn" id="button_facebooklogin">
+								<i class="fa fa-facebook left"></i> Facebook
+							</button>
+						</label>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 col-xl-12">
+				<ul>
+                    <li>About Us</li>
+                    <li>Contact</li>
+                    <li>FAQ</li>
+                    <li>Subscribe</li>
+                </ul>
+			</div>
+		</div>
+	</div>
+	<script src="localhost:8080/stonefire/resource/js/jquery-3.1.1.slim.js" 
+		th:src="@{/resource/js/jquery-3.1.1.slim.js}">
+	</script>
+	<script src="localhost:8080/stonefire/resource/js/jquery-1.12.4.js" 
+		th:src="@{/resource/js/jquery-1.12.4.js}">
+	</script>
+	 <script src="localhost:8080/stonefire/resource/js/jquery-ui-1.12.1.js" 
+		th:src="@{/resource/js/jquery-ui-1.12.1.js}">
+	</script> 
+	<script src="localhost:8080/stonefire/resource/js/tether-1.4.0.js" 
+		th:src="@{/resource/js/tether-1.4.0.js}">
+	</script>
+	<script src="localhost:8080/stonefire/resource/js/bootstrap.js" 
+		th:src="@{/resource/js/bootstrap.js}">
+	</script>
+	<script th:inline="javascript">
+		var jQ = $ ;
+	/*[+
+		
+		var user = [[ ${user} ]] ;
+		var errorMessage = [[ ${errorMessage} ]];
+		var listMM = [[ ${listMM} ]] ;
+		console.log("Tralalalalala");
+		
+	+]*/
+		
+	</script>
+	<script src="localhost:8080/stonefire/resource/js/login.js" 
+		th:src="@{/resource/js/login.js}"> 
+	</script>
+</body>
+</html>

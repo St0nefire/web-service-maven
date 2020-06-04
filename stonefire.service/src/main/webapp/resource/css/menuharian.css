@@ -1,0 +1,43 @@
+#menuharian_header {
+    margin-bottom: 2rem;
+}
+
+#menuharian_button_cancel {
+    margin: 2%;
+    margin-left: 10%;
+}
+
+#menuharian_button_add {
+    /* float: right;
+    ma */rgin-right: 5%;
+}
+
+/* #menuharian_column_header {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	margin-top: 0.5rem;
+} */
+
+#menuharian_column_header label {
+	/* display: inline-block;
+	float: left;
+	left: 5%; */
+}
+
+#menuharian_footer {
+	margin-top: 2rem;
+}
+
+.table_main .table_col {
+ 	border: 1px solid black;{
+ }
+ 
+.table_main .table_col ul {
+	margin-bottom: 0.5rem;
+}
+
+.table_main .table_col ul li {
+	font-size: 0.7rem;
+	word-wrap: false;
+}
